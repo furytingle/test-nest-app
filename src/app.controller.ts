@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpCode } from '@nestjs/common';
+import { UpdateBodyDto } from './core/dto/update-body.dto';
 import { AppService } from './app.service';
 
 @Controller()
@@ -8,5 +9,12 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Post()
+  @HttpCode(200)
+  processUpdate(@Body() updateBody: UpdateBodyDto) {
+    this.appService.processUpdate(updateBody);
+    return { success: true };
   }
 }

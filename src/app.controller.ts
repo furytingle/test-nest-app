@@ -6,12 +6,12 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
+  @Get('/hello')
   getHello(): string {
     return this.appService.getHello();
   }
 
-  @Post()
+  @Post('/process-update')
   @HttpCode(200)
   processUpdate(@Body() updateBody: UpdateBodyDto) {
     this.appService.processUpdate(updateBody);

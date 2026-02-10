@@ -6,11 +6,11 @@ export class AppService {
   private readonly logger = new Logger(AppService.name);
 
   getHello(): string {
-    this.logger.debug('Got a request');
     return 'Hello World!';
   }
 
   processUpdate(updateBody: UpdateBodyDto): void {
+    this.logger.debug('Got update request');
     this.logger.log(updateBody.message);
   }
 }

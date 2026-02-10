@@ -2,7 +2,13 @@
 
 //$telegramSecretHeader = 'X-Telegram-Bot-Api-Secret-Token';
 
-$url = 'https://api.telegram.org/bot7860418614:AAGB4X7hMygGdNADYB3kDXdjf1ipHMfEiXo/';
+$telegramToken = $argv[1] ?? null;
+
+if (!$telegramToken) {
+    die('Provide telegram token');
+}
+
+$url = sprintf('https://api.telegram.org/bot%s/setWebhook/', $telegramToken);
 
 $certificate = new CURLFile('t-self-signed-public.pem');
 

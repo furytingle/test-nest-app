@@ -2,13 +2,18 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConsoleLogger, ValidationPipe } from '@nestjs/common';
 import * as fs from 'node:fs';
+import * as path from 'node:path';
 
 async function bootstrap() {
   let options = {};
   if (process.env.ENV === 'prod') {
     const httpsOptions = {
-      key: fs.readFileSync('./secrets/t-self-signed-private.key'),
-      cert: fs.readFileSync('./secrets/t-self-signed-public.pem'),
+      key: fs.readFileSync(
+        path.join(process.cwd(), 'secrets/t-self-signed-private.key'),
+      ),
+      cert: fs.readFileSync(
+        path.join(process.cwd(), 'secrets/t-self-signed-public.pem'),
+      ),
     };
     options = {
       httpsOptions,

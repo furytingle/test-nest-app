@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsNotEmpty, IsObject, IsOptional } from 'class-validator';
 import { Expose } from 'class-transformer';
 
 export class UpdateBodyDto {
@@ -6,7 +6,7 @@ export class UpdateBodyDto {
   @Expose({ name: 'update_id' })
   updateId: bigint;
 
-  @IsString()
+  @IsObject()
   @IsOptional()
-  message: string | null;
+  message: object | null;
 }

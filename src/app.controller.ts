@@ -15,7 +15,7 @@ export class AppController {
   @Post('/process-update')
   @HttpCode(200)
   processUpdate(@Req() request: Request) {
-    console.log(request);
+    console.log(request.body);
     //this.appService.processUpdate(updateBody);
     return { success: true };
   }

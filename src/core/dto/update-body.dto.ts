@@ -1,12 +1,15 @@
-import { IsNotEmpty, IsObject, IsOptional } from 'class-validator';
-import { Expose } from 'class-transformer';
+import { IsInt, IsNotEmpty, IsObject, ValidateNested } from 'class-validator';
+import { Expose, Type } from 'class-transformer';
+import { MessageDto } from './message.dto';
 
 export class UpdateBodyDto {
   @IsNotEmpty()
+  @IsInt()
   @Expose({ name: 'update_id' })
-  updateId: bigint;
+  readonly updateId: bigint;
 
   @IsObject()
-  @IsOptional()
-  message: object | null;
+  @ValidateNested()
+  @Type(() => MessageDto)
+  readonly message: MessageDto;
 }

@@ -13,8 +13,8 @@ export class AppController {
 
   @Post('/process-update')
   @HttpCode(200)
-  processUpdate(@Body() updateBodyDto: UpdateBodyDto) {
-    this.appService.processUpdate(updateBodyDto);
+  async processUpdate(@Body() updateBodyDto: UpdateBodyDto) {
+    await this.appService.processUpdate(updateBodyDto);
     return { success: true };
   }
 }

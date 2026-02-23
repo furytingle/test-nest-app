@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, HttpCode, Req } from '@nestjs/common';
-import { UpdateBodyDto } from './core/dto/update-body.dto';
+import { UpdateBodyDto } from '../core/dto/update-body.dto';
 import { AppService } from './app.service';
 
 @Controller()

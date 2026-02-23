@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { AppModule } from './modules/app.module';
 import { ConsoleLogger, ValidationPipe } from '@nestjs/common';
 import * as fs from 'node:fs';
 import * as path from 'node:path';

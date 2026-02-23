@@ -1,15 +1,19 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
-import { UpdateBodyDto } from './core/dto/update-body.dto';
+import { UpdateBodyDto } from '../core/dto/update-body.dto';
 import { plainToClass } from 'class-transformer';
 import { FindOrCreateUserDto } from './user/dto/find-or-create-user.dto';
 import { validate } from 'class-validator';
 import { UserService } from './user/user.service';
+import { TelegramService } from '../integrations/telegram.service';
 
 @Injectable()
 export class AppService {
   private readonly logger = new Logger(AppService.name);
 
-  constructor(@Inject() private readonly userService: UserService) {}
+  constructor(
+    @Inject() private readonly userService: UserService,
+    @Inject() private readonly telegramService: TelegramService,
+  ) {}
 
   getHello(): string {
     return 'Hello World!';
@@ -28,6 +32,14 @@ export class AppService {
     }
 
     const user = await this.userService.findOrCreate(findOrCreateUserDto);
+
+    if (updateBody.message.location) {
+      await this.userService.updateUserLocation(
+        user,
+        updateBody.message.location,
+      );
+      this.telegramService.sendMessage(user.telegramId, 'Location updated');
+    }
 
     this.logger.log('Got local user', user);
   }

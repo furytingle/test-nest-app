@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Point } from 'geojson';
 
 @Entity()
 export class User {
@@ -19,4 +20,19 @@ export class User {
 
   @Column({ name: 'telegram_language_code', type: 'varchar', nullable: true })
   telegramLanguageCode?: string | null;
+
+  @Column({
+    name: 'created_at',
+    type: 'timestamptz',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  createdAt: Date;
+
+  @Column({
+    type: 'geography',
+    spatialFeatureType: 'Point',
+    srid: 4326,
+    nullable: true,
+  })
+  location: Point | null;
 }

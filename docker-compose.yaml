@@ -1,6 +1,7 @@
 services:
   db:
-    image: postgres:18.1-alpine
+    image: postgis/postgis:18-3.6
+    platform: linux/amd64
     restart: always
     environment:
       POSTGRES_USER: ${DB_USER}

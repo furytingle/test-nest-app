@@ -7,6 +7,7 @@ import {
 } from 'class-validator';
 import { Expose, Type } from 'class-transformer';
 import { FromDto } from './from.dto';
+import { LocationDto } from './location.dto';
 
 export class MessageDto {
   @IsNotEmpty()
@@ -27,5 +28,9 @@ export class MessageDto {
   @IsInt()
   readonly date: number;
 
+  @IsOptional()
   readonly text: string;
+
+  @IsOptional()
+  readonly location: LocationDto;
 }

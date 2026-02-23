@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
 import { FindOrCreateUserDto } from './dto/find-or-create-user.dto';
+import { LocationDto } from '../../core/dto/location.dto';
 
 @Injectable()
 export class UserService {
@@ -28,5 +29,13 @@ export class UserService {
     newUser.telegramUsername = user.username;
 
     return this.userRepository.save(newUser);
+  }
+
+  async updateUserLocation(user: User, location: LocationDto): Promise<void> {
+    user.location = {
+      type: 'Point',
+      coordinates: [location.longitude, location.latitude],
+    };
+    await this.userRepository.save(user);
   }
 }

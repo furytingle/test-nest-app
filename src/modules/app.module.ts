@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { HttpModule } from '@nestjs/axios';
+import { TelegramService } from '../integrations/telegram.service';
 
 @Module({
   imports: [
@@ -26,6 +27,6 @@ import { HttpModule } from '@nestjs/axios';
     UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, TelegramService],
 })
 export class AppModule {}

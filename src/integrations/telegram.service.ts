@@ -8,7 +8,13 @@ export class TelegramService {
 
   async sendMessage(chatId: string, text: string): Promise<void> {
     const url = this.getTelegramUrl('sendMessage');
-    await firstValueFrom(this.httpService.post(url, { chat_id: chatId, text }));
+
+    console.log('Sending message to telegram', { chatId, text }, url);
+    const response = await firstValueFrom(
+      this.httpService.post(url, { chat_id: chatId, text }),
+    );
+
+    console.log('Response from telegram', response.data);
   }
 
   private getTelegramUrl(method: string) {

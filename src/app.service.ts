@@ -1,4 +1,4 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable, Logger, Req } from '@nestjs/common';
 import { UpdateBodyDto } from './core/dto/update-body.dto';
 import { plainToClass } from 'class-transformer';
 import { FindOrCreateUserDto } from './user/dto/find-or-create-user.dto';
@@ -15,7 +15,12 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async processUpdate(updateBody: UpdateBodyDto): Promise<void> {
+  async processUpdate(
+    @Req() request: Request,
+    updateBody: UpdateBodyDto,
+  ): Promise<void> {
+    this.logger.log('Request body', request.body);
+
     const findOrCreateUserDto = plainToClass(
       FindOrCreateUserDto,
       updateBody.message.from,

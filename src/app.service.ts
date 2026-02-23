@@ -1,4 +1,4 @@
-import { Inject, Injectable, Logger, Req } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { UpdateBodyDto } from './core/dto/update-body.dto';
 import { plainToClass } from 'class-transformer';
 import { FindOrCreateUserDto } from './user/dto/find-or-create-user.dto';

@@ -15,10 +15,6 @@ export class AppService {
     @Inject() private readonly telegramService: TelegramService,
   ) {}
 
-  getHello(): string {
-    return 'Hello World!';
-  }
-
   async processUpdate(updateBody: UpdateBodyDto): Promise<void> {
     const findOrCreateUserDto = plainToClass(
       FindOrCreateUserDto,
@@ -38,7 +34,10 @@ export class AppService {
         user,
         updateBody.message.location,
       );
-      this.telegramService.sendMessage(user.telegramId, 'Location updated');
+      await this.telegramService.sendMessage(
+        user.telegramId,
+        'Location updated',
+      );
     }
 
     this.logger.log('Got local user', user);

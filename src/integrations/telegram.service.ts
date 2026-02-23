@@ -1,14 +1,14 @@
 import { HttpService } from '@nestjs/axios';
 import { Inject, Injectable } from '@nestjs/common';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class TelegramService {
   constructor(@Inject() private readonly httpService: HttpService) {}
 
-  public sendMessage(chatId: string, text: string): void {
+  async sendMessage(chatId: string, text: string): Promise<void> {
     const url = this.getTelegramUrl('sendMessage');
-
-    this.httpService.post(url, { chat_id: chatId, text });
+    await firstValueFrom(this.httpService.post(url, { chat_id: chatId, text }));
   }
 
   private getTelegramUrl(method: string) {

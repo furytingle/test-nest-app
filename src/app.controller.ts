@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpCode, Req } from '@nestjs/common';
 import { UpdateBodyDto } from './core/dto/update-body.dto';
 import { AppService } from './app.service';
 
@@ -13,7 +13,11 @@ export class AppController {
 
   @Post('/process-update')
   @HttpCode(200)
-  async processUpdate(@Body() updateBodyDto: UpdateBodyDto) {
+  async processUpdate(
+    @Req() request: Request,
+    @Body() updateBodyDto: UpdateBodyDto,
+  ) {
+    console.log('Request body', request.body);
     await this.appService.processUpdate(updateBodyDto);
     return { success: true };
   }

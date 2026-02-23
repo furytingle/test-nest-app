@@ -15,12 +15,7 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async processUpdate(
-    @Req() request: Request,
-    updateBody: UpdateBodyDto,
-  ): Promise<void> {
-    this.logger.log('Request body', request.body);
-
+  async processUpdate(updateBody: UpdateBodyDto): Promise<void> {
     const findOrCreateUserDto = plainToClass(
       FindOrCreateUserDto,
       updateBody.message.from,

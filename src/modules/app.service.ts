@@ -4,7 +4,7 @@ import { plainToClass } from 'class-transformer';
 import { FindOrCreateUserDto } from './user/dto/find-or-create-user.dto';
 import { validate } from 'class-validator';
 import { UserService } from './user/user.service';
-import { TelegramService } from '../integrations/telegram.service';
+import { TelegramService } from '../integrations/telegram/telegram.service';
 
 @Injectable()
 export class AppService {

@@ -1050,6 +1050,13 @@
   dependencies:
     consola "^3.2.3"
 
+"@openmeteo/sdk@^1.23.0":
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/@openmeteo/sdk/-/sdk-1.25.0.tgz#4841de588ac09a45e152adc74b8c0659630742f9"
+  integrity sha512-tpX2d/HOPn95NIU+/IU1VFFzOM3m/PqSpPSJnWuGQGEW5GogB50xUOUMrsD2N/6LCMy12e3cZEQd6c3Gb0lmtA==
+  dependencies:
+    flatbuffers "^25.9.23"
+
 "@paralleldrive/cuid2@^2.2.2":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@paralleldrive/cuid2/-/cuid2-2.3.1.tgz#3d62ea9e7be867d3fa94b9897fab5b0ae187d784"
@@ -2828,6 +2835,11 @@ flat-cache@^4.0.0:
     flatted "^3.2.9"
     keyv "^4.5.4"
 
+flatbuffers@^25.9.23:
+  version "25.9.23"
+  resolved "https://registry.yarnpkg.com/flatbuffers/-/flatbuffers-25.9.23.tgz#346811557fe9312ab5647535e793c761e9c81eb1"
+  integrity sha512-MI1qs7Lo4Syw0EOzUl0xjs2lsoeqFku44KpngfIduHBYvzm8h2+7K8YMQh1JtVVVrUvhLpNwqVi4DERegUJhPQ==
+
 flatted@^3.2.9:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.3.3.tgz#67c8fad95454a7c7abebf74bb78ee74a44023358"
@@ -4072,6 +4084,14 @@ onetime@^5.1.0, onetime@^5.1.2:
   integrity sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==
   dependencies:
     mimic-fn "^2.1.0"
+
+openmeteo@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/openmeteo/-/openmeteo-1.2.3.tgz#754a4941d78301ff7fc47a384512c3f4a1821071"
+  integrity sha512-3updmgCMnCAAjAgV3RfhMdIBPi/43RtbjQ4CizHGn52RP9SpgmVCDRpun+Ex75NG3jTF3pZp+d1BPlP9DWMHiQ==
+  dependencies:
+    "@openmeteo/sdk" "^1.23.0"
+    flatbuffers "^25.9.23"
 
 optionator@^0.9.3:
   version "0.9.4"

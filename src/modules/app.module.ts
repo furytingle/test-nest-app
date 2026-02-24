@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { HttpModule } from '@nestjs/axios';
-import { TelegramService } from '../integrations/telegram.service';
+import { TelegramService } from '../integrations/telegram/telegram.service';
 
 @Module({
   imports: [

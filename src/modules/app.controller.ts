@@ -13,7 +13,13 @@ export class AppController {
     @Body() updateBodyDto: UpdateBodyDto,
   ) {
     console.log('Request body', request.body);
-    await this.appService.processUpdate(updateBodyDto);
+
+    try {
+      await this.appService.processUpdate(updateBodyDto);
+    } catch (error) {
+      console.error(error);
+    }
+
     return { success: true };
   }
 }

@@ -9,7 +9,9 @@ export class TelegramService {
   async sendMessage(chatId: string, text: string): Promise<void> {
     const url = this.getTelegramUrl('sendMessage');
 
-    await firstValueFrom(this.httpService.post(url, { chat_id: chatId, text }));
+    await firstValueFrom(
+      this.httpService.post(url, { chat_id: chatId, text, parse_mode: 'HTML' }),
+    );
   }
 
   private getTelegramUrl(method: string) {

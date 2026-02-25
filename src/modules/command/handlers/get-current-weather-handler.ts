@@ -16,8 +16,8 @@ export class GetCurrentWeatherHandler
       );
     }
 
-    const latitude = user.location.coordinates[0];
-    const longitude = user.location.coordinates[1];
+    const latitude = user.location.coordinates[1];
+    const longitude = user.location.coordinates[0];
 
     const weatherService = new WeatherService();
     const currentWeather = await weatherService.getCurrentWeather(

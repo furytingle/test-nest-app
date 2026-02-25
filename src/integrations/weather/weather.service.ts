@@ -50,7 +50,7 @@ export class WeatherService {
     const currentWeather = new CurrentWeather();
     currentWeather.temperature = weatherData.current.temperature_2m.toFixed(1);
     currentWeather.humidity = weatherData.current.relative_humidity_2m;
-    currentWeather.windSpeed = weatherData.current.wind_speed_10m;
+    currentWeather.windSpeed = weatherData.current.wind_speed_10m.toFixed(1);
     currentWeather.rain = weatherData.current.rain;
 
     return currentWeather;

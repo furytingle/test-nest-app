@@ -3,7 +3,7 @@ export class CurrentWeather {
 
   humidity: number;
 
-  windSpeed: number;
+  windSpeed: string;
 
   rain: number;
 }

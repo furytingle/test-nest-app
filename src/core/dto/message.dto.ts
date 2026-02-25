@@ -8,6 +8,7 @@ import {
 import { Expose, Type } from 'class-transformer';
 import { FromDto } from './from.dto';
 import { LocationDto } from './location.dto';
+import { EntityDto } from './entity.dto';
 
 export class MessageDto {
   @IsNotEmpty()
@@ -32,5 +33,8 @@ export class MessageDto {
   readonly text: string;
 
   @IsOptional()
-  readonly location: LocationDto;
+  readonly location?: LocationDto | null;
+
+  @IsOptional()
+  readonly entities?: EntityDto[] | null;
 }

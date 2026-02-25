@@ -8,18 +8,11 @@ export class AppController {
 
   @Post('/process-update')
   @HttpCode(200)
-  processUpdate(
+  async processUpdate(
     @Req() request: Request,
-    //@Body() updateBodyDto: UpdateBodyDto,
+    @Body() updateBodyDto: UpdateBodyDto,
   ) {
-    console.log('Request body', request.body);
-
-    try {
-      //await this.appService.processUpdate(updateBodyDto);
-    } catch (error) {
-      console.error(error);
-    }
-
+    await this.appService.processUpdate(updateBodyDto);
     return { success: true };
   }
 }

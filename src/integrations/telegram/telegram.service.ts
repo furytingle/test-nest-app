@@ -9,9 +9,21 @@ export class TelegramService {
   async sendMessage(chatId: string, text: string): Promise<void> {
     const url = this.getTelegramUrl('sendMessage');
 
-    await firstValueFrom(
-      this.httpService.post(url, { chat_id: chatId, text, parse_mode: 'HTML' }),
-    );
+    try {
+      await firstValueFrom(
+        this.httpService.post(url, {
+          chat_id: chatId,
+          text,
+          parse_mode: 'HTML',
+        }),
+      );
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error('Failed to send message', error.message);
+      } else {
+        console.error('An unknown error occurred');
+      }
+    }
   }
 
   private getTelegramUrl(method: string) {

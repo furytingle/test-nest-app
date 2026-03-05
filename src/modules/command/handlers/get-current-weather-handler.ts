@@ -20,14 +20,22 @@ export class GetCurrentWeatherHandler
     const longitude = user.location.coordinates[0];
 
     const weatherService = new WeatherService();
-    const currentWeather = await weatherService.getCurrentWeather(
-      latitude,
-      longitude,
-    );
 
-    return this.telegramService.sendMessage(
-      user.telegramId,
-      MessageMarkupHelper.formatCurrentWeather(currentWeather),
-    );
+    try {
+      const currentWeather = await weatherService.getCurrentWeather(
+        latitude,
+        longitude,
+      );
+      return this.telegramService.sendMessage(
+        user.telegramId,
+        MessageMarkupHelper.formatCurrentWeather(currentWeather),
+      );
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error('Failed to access weather API', error.message);
+      } else {
+        console.error('An unknown error occurred');
+      }
+    }
   }
 }
